@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:22 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 13:29:23 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/04 14:09:10 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,49 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <sstream>
+#include <cstdlib> // Für std::abs
 
 class Bureaucrat {
 public:
 	class GradeTooHighException : public std::exception {
 	public:
+		GradeTooHighException(int grade)
+			: grade(grade) {}
+
+		virtual ~GradeTooHighException() throw() {}
+
 		const char* what() const throw() {
-			return "Grade is too high!";
+			std::ostringstream oss;
+			int difference = std::abs(grade - 1);
+			oss << "Grade is too high: " << grade << ". It is " << difference << " too high.";
+			message = oss.str();
+			return message.c_str();
 		}
+
+	private:
+		int grade;
+		mutable std::string message;
 	};
 
 	class GradeTooLowException : public std::exception {
 	public:
+		GradeTooLowException(int grade)
+			: grade(grade) {}
+
+		virtual ~GradeTooLowException() throw() {}
+
 		const char* what() const throw() {
-			return "Grade is too low!";
+			std::ostringstream oss;
+			int difference = std::abs(grade - 150);
+			oss << "Grade is too low: " << grade << ". It is " << difference << " too low.";
+			message = oss.str();
+			return message.c_str();
 		}
+
+	private:
+		int grade;
+		mutable std::string message;
 	};
 
 	Bureaucrat(const std::string& name, int grade);
