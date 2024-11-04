@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:22 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 14:09:10 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/04 15:00:33 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
-#include <cstdlib> // Für std::abs
+#include <cstdlib>
 
 class Bureaucrat {
 public:

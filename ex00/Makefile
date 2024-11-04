@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 13:29:46 by okrahl            #+#    #+#              #
-#    Updated: 2024/11/04 14:14:13 by okrahl           ###   ########.fr        #
+#    Updated: 2024/11/04 14:15:12 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 EXECUTABLE = bureaucrat
 
-# ANSI escape code for green text
+
 GREEN = "\033[0;32m"
-NC = "\033[0m" # No Color
+NC = "\033[0m"
 
 # Default target
 all: $(EXECUTABLE)
