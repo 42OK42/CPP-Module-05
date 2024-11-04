@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 13:29:46 by okrahl            #+#    #+#              #
-#    Updated: 2024/11/04 13:34:28 by okrahl           ###   ########.fr        #
+#    Updated: 2024/11/04 14:14:13 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ $(OBJDIR):
 # Clean up
 clean:
 	rm -f $(OBJDIR)/*.o
+	rmdir $(OBJDIR)
 
 fclean: clean
 	rm -f $(EXECUTABLE)
