@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 13:29:46 by okrahl            #+#    #+#              #
-#    Updated: 2024/11/04 16:54:29 by okrahl           ###   ########.fr        #
+#    Updated: 2024/11/04 17:26:33 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(OBJDIR):
 # Clean up
 clean:
 	rm -f $(OBJDIR)/*.o
-	-rmdir $(OBJDIR) # Use - to ignore errors if directory doesn't exist
+	@if [ -d $(OBJDIR) ]; then rmdir $(OBJDIR); fi
 	rm -f *_shrubbery # Remove all shrubbery files
 
 fclean: clean
