@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 13:29:46 by okrahl            #+#    #+#              #
-#    Updated: 2024/11/04 14:15:12 by okrahl           ###   ########.fr        #
+#    Updated: 2024/11/04 17:24:33 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,12 @@ SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 EXECUTABLE = bureaucrat
 
-
 GREEN = "\033[0;32m"
 NC = "\033[0m"
 
 # Default target
 all: $(EXECUTABLE)
-	@echo $(GREEN)Bureaucrat is ready$(NC)
+	@echo $(GREEN)bureaucrat is ready$(NC)
 
 # Linking
 $(EXECUTABLE): $(OBJECTS)
@@ -47,7 +46,7 @@ $(OBJDIR):
 # Clean up
 clean:
 	rm -f $(OBJDIR)/*.o
-	rmdir $(OBJDIR)
+	@if [ -d $(OBJDIR) ]; then rmdir $(OBJDIR); fi
 
 fclean: clean
 	rm -f $(EXECUTABLE)
