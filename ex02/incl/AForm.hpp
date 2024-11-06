@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:21 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 16:25:48 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:54:55 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ class AForm
 		};
 
 		AForm(const std::string& name, int gradeToSign, int gradeToExecute);
+		AForm(const AForm& other);
+		AForm& operator=(const AForm& other);
 		virtual ~AForm();
 
 		std::string getName() const;

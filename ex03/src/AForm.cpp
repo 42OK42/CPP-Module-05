@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:50 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 16:16:11 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:50:48 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute)
 	if (gradeToSign > 150 || gradeToExecute > 150) {
 		throw GradeTooLowException();
 	}
+}
+
+AForm::AForm(const AForm& other)
+	: name(other.name), isSigned(other.isSigned),
+	  gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute)
+{
+}
+
+AForm& AForm::operator=(const AForm& other)
+{
+	if (this != &other)
+	{
+		isSigned = other.isSigned;
+	}
+	return *this;
 }
 
 AForm::~AForm() {}

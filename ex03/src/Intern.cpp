@@ -6,13 +6,24 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:30:03 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 17:41:09 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 17:02:42 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 Intern::Intern() {}
+
+Intern::Intern(const Intern& other)
+{
+	(void)other;
+}
+
+Intern& Intern::operator=(const Intern& other)
+{
+	(void)other;
+	return *this;
+}
 
 Intern::~Intern() {}
 

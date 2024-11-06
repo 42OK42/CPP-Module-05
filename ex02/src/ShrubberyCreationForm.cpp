@@ -6,17 +6,31 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:13:47 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 16:31:55 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:55:30 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 	: AForm("ShrubberyCreationForm", 145, 137), target(target) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+	: AForm(other), target(other.target)
+{
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+{
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		target = other.target;
+	}
+	return *this;
+}
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {

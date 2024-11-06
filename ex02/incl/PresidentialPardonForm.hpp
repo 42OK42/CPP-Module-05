@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:05:19 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 16:29:06 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:49:46 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& other);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 		virtual ~PresidentialPardonForm();
 
 		void execute(Bureaucrat const & executor) const;

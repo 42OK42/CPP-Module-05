@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:15 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 16:53:36 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 17:00:05 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 
 int main()
 {
+	// Test 1: Valid bureaucrat and forms
 	try
 	{
 		Bureaucrat bob("Bob", 1);
-		Bureaucrat alice("Alice", 160); // Bureaucrat with too low a grade to sign
-
 		ShrubberyCreationForm shrubbery("home");
 		RobotomyRequestForm robotomy("Bender");
 		PresidentialPardonForm pardon("Alice");
@@ -38,14 +37,23 @@ int main()
 		std::cout << "\nTesting PresidentialPardonForm:" << std::endl;
 		bob.signForm(pardon);
 		bob.executeForm(pardon);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Test 1 failed: " << e.what() << std::endl;
+	}
 
-		std::cout << "\nTesting with Bureaucrat with insufficient grade:" << std::endl;
+	// Test 2: Invalid grade bureaucrat
+	try
+	{
+		Bureaucrat alice("Alice", 160);
+		ShrubberyCreationForm shrubbery("home");
 		alice.signForm(shrubbery);
 		alice.executeForm(shrubbery);
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Test 2 failed: " << e.what() << std::endl;
 	}
 
 	return 0;

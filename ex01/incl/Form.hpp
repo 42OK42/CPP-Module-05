@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:21 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/04 15:46:42 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:47:55 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class Form
 		};
 
 		Form(const std::string& name, int gradeToSign, int gradeToExecute);
+		Form(const Form& other);
+		Form& operator=(const Form& other);
 		~Form();
 
 		std::string getName() const;
