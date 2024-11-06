@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:21 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:54:55 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:31:20 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,6 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		class GradeTooHighException : public std::exception
-		{
-			const char* what() const throw()
-			{
-				return "Form grade is too high!";
-			}
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			const char* what() const throw()
-			{
-				return "Form grade is too low!";
-			}
-		};
-
-		class FormNotSignedException : public std::exception
-		{
-			const char* what() const throw()
-			{
-				return "Form is not signed!";
-			}
-		};
-
 		AForm(const std::string& name, int gradeToSign, int gradeToExecute);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
@@ -67,6 +43,24 @@ class AForm
 		bool isSigned;
 		const int gradeToSign;
 		const int gradeToExecute;
+};
+
+class GradeTooHighException : public std::exception
+{
+    public:
+        const char* what() const throw();
+};
+
+class GradeTooLowException : public std::exception
+{
+    public:
+        const char* what() const throw();
+};
+
+class FormNotSignedException : public std::exception
+{
+    public:
+        const char* what() const throw();
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& form);

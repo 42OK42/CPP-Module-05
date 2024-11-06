@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:19 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:39:42 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:20:54 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,30 @@ void Bureaucrat::decrementGrade() {
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return os;
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(int grade) : grade(grade) {}
+
+Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    std::ostringstream oss;
+    int difference = std::abs(grade - 1);
+    oss << "Grade is too high: " << grade << ". It is " << difference << " too high.";
+    message = oss.str();
+    return message.c_str();
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(int grade) : grade(grade) {}
+
+Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    std::ostringstream oss;
+    int difference = std::abs(grade - 150);
+    oss << "Grade is too low: " << grade << ". It is " << difference << " too low.";
+    message = oss.str();
+    return message.c_str();
 }

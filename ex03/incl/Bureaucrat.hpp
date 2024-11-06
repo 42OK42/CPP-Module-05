@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:22 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:43:10 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:44:43 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,25 @@ class AForm;
 class Bureaucrat
 {
 	public:
+		Bureaucrat(const std::string& name, int grade);
+		Bureaucrat(const Bureaucrat& other);
+		Bureaucrat& operator=(const Bureaucrat& other);
+		~Bureaucrat();
+
+		const std::string& getName() const;
+		int getGrade() const;
+		void incrementGrade();
+		void decrementGrade();
+		void signForm(AForm& form) const;
+		void executeForm(AForm const & form) const;
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				GradeTooHighException(int grade)
-					: grade(grade) {}
-
-				virtual ~GradeTooHighException() throw() {}
-
-				const char* what() const throw()
-				{
-					std::ostringstream oss;
-					int difference = std::abs(grade - 1);
-					oss << "Grade is too high: " << grade << ". It is " << difference << " too high.";
-					message = oss.str();
-					return message.c_str();
-				}
-
+				GradeTooHighException(int grade);
+				virtual ~GradeTooHighException() throw();
+				const char* what() const throw();
+			
 			private:
 				int grade;
 				mutable std::string message;
@@ -50,37 +52,14 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				GradeTooLowException(int grade)
-					: grade(grade) {}
-
-				virtual ~GradeTooLowException() throw() {}
-
-				const char* what() const throw()
-				{
-					std::ostringstream oss;
-					int difference = std::abs(grade - 150);
-					oss << "Grade is too low: " << grade << ". It is " << difference << " too low.";
-					message = oss.str();
-					return message.c_str();
-				}
-
+				GradeTooLowException(int grade);
+				virtual ~GradeTooLowException() throw();
+				const char* what() const throw();
+			
 			private:
 				int grade;
 				mutable std::string message;
 		};
-
-		Bureaucrat(const std::string& name, int grade);
-		Bureaucrat(const Bureaucrat& other);
-		Bureaucrat& operator=(const Bureaucrat& other);
-		~Bureaucrat();
-
-
-		const std::string& getName() const;
-		int getGrade() const;
-		void incrementGrade();
-		void decrementGrade();
-		void signForm(AForm& form) const;
-		void executeForm(AForm const & form) const;
 
 	private:
 		const std::string _name;

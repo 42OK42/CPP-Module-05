@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:21 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:47:55 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:22:08 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ class Form
 	public:
 		class GradeTooHighException : public std::exception
 		{
-			const char* what() const throw() {
-				return "Form grade is too high!";
-			}
+			public:
+				const char* what() const throw();
 		};
 
-		class GradeTooLowException : public std::exception {
-			const char* what() const throw() {
-				return "Form grade is too low!";
-			}
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw();
 		};
 
 		Form(const std::string& name, int gradeToSign, int gradeToExecute);

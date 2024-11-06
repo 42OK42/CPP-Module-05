@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:50 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:50:48 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:42:53 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,19 @@ std::ostream& operator<<(std::ostream& os, const AForm& form) {
 	   << ", Grade to Sign: " << form.getGradeToSign()
 	   << ", Grade to Execute: " << form.getGradeToExecute();
 	return os;
+}
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+    return "Form grade is too high!";
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+    return "Form grade is too low!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+    return "Form is not signed!";
 }

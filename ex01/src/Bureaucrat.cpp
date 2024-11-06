@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:19 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 16:41:13 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:27:47 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,28 @@ void Bureaucrat::signForm(Form& form) const {
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return os;
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(int grade) : grade(grade) {}
+
+Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    std::ostringstream oss;
+    oss << "Grade " << grade << " is too high (must be between 1 and 150)";
+    message = oss.str();
+    return message.c_str();
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(int grade) : grade(grade) {}
+
+Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    std::ostringstream oss;
+    oss << "Grade " << grade << " is too low (must be between 1 and 150)";
+    message = oss.str();
+    return message.c_str();
 }
