@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:41:21 by okrahl            #+#    #+#             */
-/*   Updated: 2024/11/06 18:31:20 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:59:14 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ class AForm
 		bool isSigned;
 		const int gradeToSign;
 		const int gradeToExecute;
-};
 
-class GradeTooHighException : public std::exception
-{
-    public:
-        const char* what() const throw();
-};
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 
-class GradeTooLowException : public std::exception
-{
-    public:
-        const char* what() const throw();
-};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 
-class FormNotSignedException : public std::exception
-{
-    public:
-        const char* what() const throw();
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& form);
